@@ -7,10 +7,10 @@
             <div class="card">
                 @foreach($data as $item)
                 @endforeach
-                @if ($item->cekin == '')
+                @if (isset($item->cekin) == '')
                     <div class="card-header">{{ __('CHECKIN') }}</div>
                 @endif
-                @if ($item->cekin !== '' && $item->cekout == '00:00:00')
+                @if (isset($item->cekin) !== '' && isset($item->cekout) == '00:00:00')
                     <div class="card-header">{{ __('CHECKOUT') }}</div>
                 @endif
                 <div class="card-body">
@@ -20,7 +20,7 @@
                         </div>
                     @endif
                     
-                    @if ($item->cekin == '')
+                    @if (isset($item->cekin) == '')
                         <form id="location-form" action="{{ route('checkin') }}" method="POST">
                             @csrf
                             <label for="nama">Nama:</label>
